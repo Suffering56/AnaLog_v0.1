@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Registration</title>
+    </h:head>
+    <h:body styleClass="bodyStyle">
+        <h:outputStylesheet library="css" name="Styles.css"/>
+        <f:view>
+            <h:form>
+                <h:panelGrid style="margin: auto; margin-top: 10%; font-size: 150%;">
+                    Welcome to Registration!
+                </h:panelGrid>
+                
+                <h:panelGrid columns="2" style="margin: auto; margin-top: 1%; font-size: 115%;">
+                    
+                    <h:outputLabel value="Введите логин:"/>
+                    <h:inputText value="#{Reg.newLogin}" style="width: 97%;"/>
+                    
+                    <h:outputLabel value="Введите пароль:"/>
+                    <h:inputSecret value="#{Reg.newPass}" style="width: 97%;"/>
+                    
+                    <h:outputLabel value="Подтверждение пароля:"/>
+                    <h:inputSecret value="#{Reg.repeatNewPass}" style="width: 97%;"/>
+                    
+                    <h:outputLabel value="Введите e-mail:"/>
+                    <h:inputText value="#{Reg.newMail}" style="width: 97%;"/>
+               
+                </h:panelGrid>
+                
+                <h:panelGrid style="margin: auto; margin-top: 1%;">
+                    <h:outputLabel value="#{Reg.regMsg}" style="font-size: 120%;"/>
+                    
+                    <h:commandButton 
+                        value="Зарегистрироваться" 
+                        style="width: 100%; font-size: 120%;"
+                        action="#{Reg.addNewUser()}">
+                    </h:commandButton>
+                    
+                    <h:commandButton 
+                        value="На главную" 
+                        style="width: 100%; font-size: 120%;"
+                        action="GoToIndex">
+                    </h:commandButton>
+                </h:panelGrid>
+                
+            </h:form>
+        </f:view>
+    </h:body>
+</html>

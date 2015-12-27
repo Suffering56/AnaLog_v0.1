@@ -1,0 +1,22 @@
+/* 
+    Document   : registrationStyles
+    Created on : 29.02.2013, 18:18:32
+    Author     : Suffering
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.bodyStyle { 
+    background-color: windowframe;
+}
+
+.panelGridCenter {
+    margin: auto;
+    margin-top: 10%;   
+}
+
+.dataSortFilterComponents {
+    width: 100%;
+    font-size: 120%;
+    
+}

@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Data</title>
+    </h:head>
+    <h:body styleClass="bodyStyle">
+        <h:outputStylesheet library="css" name="Styles.css"/>
+        <f:view>	
+            <h:form>
+                <h:panelGrid style="margin: auto;  margin-top: 5%;" columns="5">
+                    <h:commandButton 
+                        value="Импорт" 
+                        style="font-size: 120%;"
+                        action="#{Data.loadData()}">
+                    </h:commandButton>
+                    <h:commandButton 
+                        value="Очистить" 
+                        style="font-size: 120%;"
+                        action="#{Data.clearData()}">
+                    </h:commandButton>
+                    <h:commandButton 
+                        value="Обновить" 
+                        style="font-size: 120%;"
+                        action="#{Data.pageRefresh()}">                  
+                    </h:commandButton>
+                    <h:commandButton 
+                        value="Отчет" 
+                        style="font-size: 120%;"
+                        action="#{Data.toReportClick()}">
+                    </h:commandButton>
+                </h:panelGrid>
+
+                <h:panelGrid style="margin: auto;" columns="2">
+                    <h:selectOneMenu 
+                        value ="#{Data.ipMenuSelectedItem}" 
+                        styleClass="dataSortFilterComponents">
+                        <f:selectItems value="#{Data.ipMenuItems}"/>
+                    </h:selectOneMenu>
+                    <h:commandButton value="Фильтр по IP" action="#{Data.applyFilter()}" styleClass="dataSortFilterComponents"/>
+                    <h:inputText value="#{Data.searchCriterion}" style="width: 97.8%; font-size: 150%;"/>
+                    <h:commandButton value="Поиск по URL" action="#{Data.applySearch()}" styleClass="dataSortFilterComponents"/>
+                </h:panelGrid>
+                <h:panelGrid style="margin: auto;">
+                    <h:dataTable 
+                        value="#{Data.table}"                   
+                        style="margin: auto; font-size: 130%"  
+                        border="1" 
+                        bgcolor="#FFFFFF" 
+                        var="item" 
+                        cellpadding="5px"
+                        columnClasses="columnsStyle">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Check"/>
+                                <br/>
+                                <h:outputText value="Check"/>
+                            </f:facet>
+                            <h:selectBooleanCheckbox value="#{item.selected}"/> 
+                        </h:column>
+                        <h:column> 
+                            <f:facet name="header">
+                                <h:commandLink value="ID" action="#{Data.applySort('id')}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:commandLink value="Дата" action="#{Data.applySort('sessiontimestamp')}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sessiontimestamp}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Время"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sessiontimestamp}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:commandLink value="IP-адрес" action="#{Data.applySort('clientaddress')}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clientaddress}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:commandLink value="Имя клиента" action="#{Data.applySort('clientname')}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clientname}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:commandLink value="URL - адрес" action="#{Data.applySort('urlAddress')}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.urlAddress}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:commandLink value="Длительность" action="#{Data.applySort('duration')}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.duration}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:commandLink value="Трафик" action="#{Data.applySort('traffic')}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.traffic}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:commandLink value="Тип содержимого" action="#{Data.applySort('contenttype')}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.contenttype}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>

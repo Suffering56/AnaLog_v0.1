@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Index</title>
+    </h:head>
+    <h:body styleClass="bodyStyle">
+        <h:outputStylesheet library="css" name="Styles.css"/>
+
+        <h:form>
+            <h:panelGrid 
+                border="1" 
+                style="margin: auto; margin-top: 15%" 
+                bgcolor="#FFFFFF" columns="2">  
+              
+                <h:outputLabel value="Логин"/>
+                <h:inputText value="#{Index.inputLogin}"/>
+            
+                <h:outputLabel value="Пароль"/>
+                <h:inputSecret value="#{Index.inputPass}"/>
+            
+                <h:commandButton 
+                    value="Вход" 
+                    style="width: 100px" 
+                    action="#{Index.authCheck}">
+                </h:commandButton>
+                <h:commandButton
+                    value="Регистрация" 
+                    style="width: 100%" 
+                    action="GoToRegistration">
+                </h:commandButton>
+                
+            </h:panelGrid> 
+             
+            <h:panelGrid style="margin: auto; font-size: 150%;">
+                <h:outputLabel value="#{Index.errorMsg}" />
+            </h:panelGrid>
+
+        </h:form> 
+    </h:body>
+</html>
